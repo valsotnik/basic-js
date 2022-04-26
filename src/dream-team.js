@@ -14,6 +14,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function createDreamTeam(members) {
+	// throw new NotImplementedError('Not implemented');
 	if (Array.isArray(members) !== true) return false
   return members.filter(a => typeof a === "string")
 								.map(a => a.replace(/\s/g, '').slice(0,1).toUpperCase())

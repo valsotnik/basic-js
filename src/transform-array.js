@@ -24,11 +24,6 @@ function transform(arr) {
 		if (arr[i] === '--discard-next')  i++ 
 		if (arr[i] === '--discard-prev')  result.pop()  
 
-		// typeof arr[i] === 'number' ? result.push(arr[i]) :
-		// 			 arr[i] === '--double-next' ? result.push(arr[i + 1]) :
-		// 			 arr[i] === '--double-prev' ? result.push(arr[i - 1]) :
-		// 			 arr[i] === '--discard-next' ? i++ :
-		// 			 arr[i] === '--discard-prev' ? result.pop() 
 	}
 	return result
 }
