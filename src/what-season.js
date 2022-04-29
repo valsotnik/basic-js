@@ -14,18 +14,36 @@ const { NotImplementedError } = require('../extensions/index.js');
 function getSeason(date) {
   // throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
-  if (!date || date === undefined) return 'Unable to determine the time of year!';
+  if (!date || typeof (date) === 'undefined') return 'Unable to determine the time of year!';
 
-  if (Object.prototype.toString.call(date) !== '[Object Date]')  throw new Error('Invalid date!');
+  if (Object.prototype.toString.call(date) !== '[object Date]')  throw new Error('Invalid date!');
 
-  return (date.getMonth() === 11 || date.getMonth() === 0 || date.getMonth() === 1 ) ? 'winter'
-       : (date.getMonth() === 2 || date.getMonth() === 3 || date.getMonth() === 4 ) ? 'spring'
-       : (date.getMonth() === 5 || date.getMonth() === 6 || date.getMonth() === 7 ) ? 'summer'
-       : 'autumn'
-          
+	if (date instanceof Date) {
+		try {
+			date.getTime()
+		}
+		catch {
+			throw new Error('Invalid date!')
+		}
+
+
+		return (date.getMonth() === 11 || date.getMonth() === 0 || date.getMonth() === 1 ) ? 'winter'
+		: (date.getMonth() === 2 || date.getMonth() === 3 || date.getMonth() === 4 ) ? 'spring'
+		: (date.getMonth() === 5 || date.getMonth() === 6 || date.getMonth() === 7 ) ? 'summer'
+		: 'autumn'
+	}
+
+
+  throw new Error('Invalid date!');        
 
 }
 
 module.exports = {
   getSeason
 };
+
+
+
+
+
+//================COMPLETE======================
