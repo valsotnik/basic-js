@@ -42,6 +42,8 @@ function transform(arr) {
 			}
 		}
 
+
+		
 		result.push(arr[i]);
 
 	}
