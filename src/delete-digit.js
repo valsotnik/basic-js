@@ -12,10 +12,20 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function deleteDigit(n) {
-  throw new NotImplementedError('Not implemented');
+  // throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 
-	String(n).split('')
+	let array = String(n).split('');
+	let max = 0;
+
+	for (let i = 0; i < array.length; i++) {
+		let current = [...array];
+		current.splice(i,1);
+		if (+current.join('') > max) {
+			max = +current.join('');
+		}
+	}
+	return max
 
 }
 
