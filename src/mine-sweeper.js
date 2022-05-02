@@ -24,27 +24,31 @@ const { NotImplementedError } = require('../extensions/index.js');
  * ]
  */
 function minesweeper(matrix) {
-  throw new NotImplementedError('Not implemented');
+  // throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 
-	let matrixMine = [];
+	let matrixMine = JSON.parse(JSON.stringify(matrix));
+
+	for (let matrixLine of matrixMine) {
+    for (let i = 0; i < matrixLine.length; i++) {
+      matrixLine[i] = 0;
+    }
+  }
 
 	for (let i = 0; i < matrix.length; i++) {
-		for (let j = 0; j < matrix[i].length; j++) {
-			matrixMine[i][j].push(0);
-			if (matrix[i][j] === 'true') {
-				matrixMine[i][j]+= 1;
-			}
-			if (matrix[i][j + 1] === 'true') {
-				matrixMine[i][j]+= 1;
-			}
-			if (matrix[i][j - 1] === 'true') {
-				matrixMine[i][j]+= 1;
-			}
-			
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i - 1] && matrix[i - 1][j] === true) matrixMine[i][j] += 1;
+      if (matrix[i - 1] && matrix[i - 1][j + 1] === true) matrixMine[i][j] += 1;
+      if (matrix[i - 1] && matrix[i - 1][j - 1] === true) matrixMine[i][j] += 1;
+      if (matrix[i] && matrix[i][j + 1] === true) matrixMine[i][j] += 1;
+      if (matrix[i] && matrix[i][j - 1] === true) matrixMine[i][j] += 1;
+      if (matrix[i + 1] && matrix[i + 1][j] === true) matrixMine[i][j] += 1;
+      if (matrix[i + 1] && matrix[i + 1][j + 1] === true) matrixMine[i][j] += 1;
+      if (matrix[i + 1] && matrix[i + 1][j - 1] === true) matrixMine[i][j] += 1;
+    }
+  }
 
-		}
-	}
+return matrixMine
 
 
 }
